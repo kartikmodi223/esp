@@ -73,7 +73,7 @@ app.get('/', (req, res) => {
 
 
 // Set up the route to handle form submissions
-app.post('/home', (req, res) => {
+app.post('/table', (req, res) => {
   // Retrieve the form data and insert it into the database
 
   const data = req.body;

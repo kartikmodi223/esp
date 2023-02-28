@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
@@ -93,7 +91,7 @@ app.post('/saveAll',(req,res)=>{
   const nemail = req.body.new_email;
 
   if(typeof(nfname) == "string"){
-    db.query('insert into excel(fname,lname,email,department) value(?,?,?,?)',[nfname,nlname,ndepartment,nemail],(err,result)=>{
+    db.query('insert into excel(f  name,lname,email,department) value(?,?,?,?)',[nfname,nlname,ndepartment,nemail],(err,result)=>{
       if(err) throw err;
       console.log("inserted one")
     })
@@ -103,7 +101,7 @@ app.post('/saveAll',(req,res)=>{
         if(err) throw err;
         console.log("inserted all")
       })
-    }res.send("ok")
+    }res.send("all data inserted")
   }
   
 })

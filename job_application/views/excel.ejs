@@ -98,7 +98,7 @@
   </table>
   
   <div>
-    <input align="center" type="submit" name="submit" id="submit">
+    <input align="center" type="submit" name="submit"  id="submit">
     <span align="center" id="add" onclick="addRow()">+</span><br>
   </div>
 
@@ -154,15 +154,16 @@
     fetch(`http://localhost:8050/add?fname=${fname}&lname=${lname}&department=${department}&email=${email}`);
   }
   // async function addall() {
+
   //   for(let i=0;i<excel.length ;i++){
-  //     var fname = document.getElementById(`fname${i}`).value;
-  //   var lname = document.getElementById(`lname${i}`).value;
-  //   var department = document.getElementById(`department${i}`).value;
-  //   var email = document.getElementById(`email${i}`).value;
+  //    var nfname = document.getElementById("new_fname").value;
+  //   var nlname = document.getElementById("new_lname").value;
+  //   var ndepartment = document.getElementById("new_department").value;
+  //   var nemail = document.getElementById("new_email").value;
     
    
   //   alert("are you sure")
-  //   fetch(`http://localhost:8050/addall?fname=${fname[i]}&lname=${lname[i]}&department=${department[i]}&email=${email[i]}`);
+  //   fetch(`http://localhost:8050/addall?fname=${nfname[i]}&lname=${nlname[i]}&department=${ndepartment[i]}&email=${nemail[i]}`);
   // }
   // }
 </script>
