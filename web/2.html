@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+
+function db(){
+alert("you click doublr click");
+}
+function Down() {
+  document.getElementById("P").style.color = "red";
+
+function Up() {
+  document.getElementById("P").style.color = "blue";
+}
+}
+function blur() {
+  var x = document.getElementById("blr1");
+  x.value = x.value.toUpperCase();
+}
+function message() {
+  alert("This alert box was triggered by the onreset event ");
+}
+function key1() {
+  alert("You pressed a key inside the input field");
+}
+</script>
+
+  </head>
+  <body>
+    
+   <h1>HTML DOM Events</h1>
+    <h2> Event 1</h2>
+    
+    <p id="P" onmousedown="Down()" onmouseup="Up()">
+    The mouseDown sets  to red.
+    The mouseUp functio blue.
+    </p>
+    <h2> Event 2</h2>
+      <form onreset="message()">
+     <input type="text" size="20">
+        <input type="reset"><br>
+        <p> when user click in textfield.....</p>
+        <input type="text" onkeydown="key1()"><br>
+        <p> when user click input conveert in uppercase...</p>
+       <input type="text" id="blr1" onblur="blur()">
+    </form>
+  </body>
+</html>
+

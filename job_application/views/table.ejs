@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+    tr{
+            border: 3px solid black;
+            padding: 5px;
+            margin: 10px;
+        }
+
+        td{
+            border: 3px solid black;
+            padding: 20px;
+            margin: 10px;
+            background-color: azure;
+        }
+         
+    </style>
+<body>
+    <form method="get" action="/search"  align="center">
+    <select >
+        <option value="1">and</option>
+        <option value="1">or</option>
+    </select>
+    <label >Search:</label>
+    <input type="text" name="search" id="search" <%= typeof search !== 'undefined' ? search : '' %>>
+    <input type="submit" value="go"/>
+  </form>
+  <div>
+ <button>   <span align="center" id="deleteBtn">Delete all</span></button>
+</div><br>
+
+<%let pages = count_data/limit %>
+<% for(let i=0;i<pages;i++) { %>
+    <button><span id="<%=i+1%>" onclick="pagination('/table?id=<%=i+1%>&ajax=true')">page<%=i+1%></span></button>
+    <%}%>
+   
+    <table id="table1">
+        <tr>
+            <td>Select</td>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Gender</td>
+            <td>DOB</td>
+            <td>Desigation</td>
+            <td>Addres</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zipcode</td>
+            <td>Relationship Status</td>
+            <td colspan="2">action</td>
+        </tr>
+        <%for(let i=0; i<data.length; i++) {%>
+            <tr id="tr<%=data[i].id%>">
+                <td><input type="checkbox" value="<%=data[i].id%>" name="selectedRows" class="selectedRows"
+                        id="check"></td>
+                <td>
+                    <%=data[i].id%>
+                </td>
+                <td>
+                    <%=data[i].first_name%>
+                </td>
+                <td>
+                    <%=data[i].last_name%>
+                </td>
+                <td>
+                    <%=data[i].gender%>
+                </td>
+                <td>
+                    <%=data[i].dob%>
+                </td>
+                <td>
+                    <%=data[i].job_designation%>
+                </td>
+                <td>
+                    <%=data[i].address1%>
+                </td>
+                <td>
+                    <%=data[i].email%>
+                </td>
+                <td>
+                    <%=data[i].phone%>
+                </td>
+                <td>
+                    <%=data[i].city%>
+                </td>
+                <td>
+                    <%=data[i].state%>
+                </td>
+                <td>
+                    <%=data[i].zip%>
+                </td>
+                <td>
+                    <%=data[i].relation_status%>
+                </td>
+                <td>
+                    <p id="delete" onclick="deleteOne(`<%=data[i].id%>`)">Delete</p>
+                </td>
+                <td>
+                    <a href="edit?id=<%=data[i].id%>">edit</a>
+                </td>
+            </tr>
+            <%}%>
+    </table>
+    
+</form>
+
+</body>
+<script>
+
+async function deleteOne(id){
+        const shouldDelete = confirm(`Are you sure you want to delete rows with the following IDs: ${id}?`);
+        if (!shouldDelete) { return; }
+        document.getElementById(`tr${id}`).style.display = "none";
+        const response = fetch(`http://localhost:8080/table/deleteOne?id=${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id
+            })
+        }).then(res => res.json())
+        .then(data => {
+            if(data){
+                alert("Deleted successfully!");
+            }
+        })
+    }
+    const deleteButton = document.getElementById("deleteBtn");
+    deleteButton.addEventListener('click', () => {
+        var checkedData = [];
+        var checkedIds = document.getElementsByClassName("selectedRows");
+        for (let i = 0; i < checkedIds.length; i++) {
+            if (checkedIds[i].checked) {
+                checkedData.push(checkedIds[i].value);
+            }
+        }
+        const shouldDelete = confirm(`Are you sure you want to delete rows with the following IDs: ${checkedData.join(', ')}?`);
+        if (!shouldDelete) { return; }
+        checkedData.forEach(id => {
+            document.getElementById(`tr${id}`).style.display = "none";
+        });
+      
+        const ans = fetch(`http://localhost:8080/table/deleteData?id=${checkedData}`);
+    });
+    function pagination(x){
+    console.log(x)
+    var table1 = document.getElementById('table1');
+    var str="";
+    fetch(x).then((response)=>{return response.json()}).then((responsedata)=>{
+        data = responsedata;
+       
+        str+=`
+    <tr>
+        <td>Checkbox</td>
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Gender</td>
+        <td>DOB</td>
+        <td>Desigation</td>
+        <td>Addres</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>City</td>
+        <td>State</td>
+        <td>Zipcode</td>
+        <td>Relationship Status</td>
+        <td>Actions</td>
+    </tr>`
+for(let i=0;i<data.length;i++){
+    str+=`<tr id="${data[i].id}">
+        <td>
+            <input type="checkbox" value="${data[i].id}" name="selecterows" class="selecterows" ></td>
+        <td>${data[i].id}</td>
+        <td>${data[i].first_name}</td>
+        <td>${data[i].last_name}</td>
+        <td>${data[i].gender}</td>
+        <td>${data[i].dob}</td>
+        <td>${data[i].job_designation}</td>
+        <td>${data[i].address1}</td>
+        <td>${data[i].email}</td>
+        <td>${data[i].phone}</td>
+        <td>${data[i].city}</td>
+        <td>${data[i].state}</td>
+        <td>${data[i].zip}</td>
+        <td>${data[i].relation_status}</td>
+        <td><p id="delete" onclick="deleteOne('${data[i].id}')">Delete</p></td>
+    </tr>`
+}
+console.log(str);
+table1.innerHTML=str;
+    
+    });
+}
+
+
+
+</script>
+</html>
+</body>
+</html>

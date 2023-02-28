@@ -1,0 +1,85 @@
+<html>
+<head>
+<script>
+
+    function blur1() {
+  var a = document.getElementById("blr");
+  a.value = a.value.toUpperCase();
+}
+function key1() {
+  alert("You pressed a key inside the input field");
+}
+function Down() {
+  document.getElementById("r").style.color = "red";
+}
+function Up() {
+  document.getElementById("r").style.color = "blue";
+}
+function r1() {
+  alert("This alert box was triggered by the onreset event handler");
+}
+function clickme() {
+  document.getElementById("ef").innerHTML = "Hello World";
+}
+
+</script></head>    
+<body>
+    <p id="P" onmousedown="Down()" onmouseup="Up()">
+        The mouseDown sets  to red.
+        The mouseUp sets to blue.
+        </p>   
+    
+    <table border=" 1">
+        <tr id="r">
+          <td id="b" ondblclick="myFunction()" >Company</td>
+          <td>Contact</td>
+          <td>Country</td>
+          <td>Country</td>
+        </tr>
+        <tr>
+          <td>Alfreds </td>
+          <td>Maria </td>
+          <td>Germany</td>
+          <td>Country</td>
+        </tr>
+        <tr>
+          <td>Centro </td>
+          <td> Chang</td>
+          <td>Mexico</td>
+          <td>Country</td>
+        </tr>
+        <tr>
+            <td>Centro </td>
+            <td> Chang</td>
+            <td>Mexico</td>
+            <td>Country</td>
+          </tr>
+      </table>
+      <br>
+
+    Enter your name: <input type="text" id="blr" onblur="blur1()">
+
+<p>the text convert in uppercase when user leave the text field</p>
+
+
+    <form onreset="r1()">
+        <p> when user click inside the field</p>
+
+        Enter your name: <input type="text" onkeydown="key1()"><br>
+
+        <p>when user click an reset</p>
+
+        Enter your name: <input type="text" size="20">
+        <input type="reset"><br>
+       
+
+<input type="button" value="click here" onclick="clickme()"/>
+
+<p id="ef"></p>
+
+</script></head>    
+<body>
+      </form>
+    
+</body>
+</html>

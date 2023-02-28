@@ -1,0 +1,41 @@
+<html> 
+<head> 
+<style type="text/css"> 
+body 
+{margin: 30px;
+padding: 10px;} 
+th, td 
+{padding: 15px;
+}
+</style>  
+<script>
+    function alertt() {
+  document.getElementById("td").innerHTML ="hello esp";
+}
+    function Down() {
+  document.getElementById("td").style.color = "red";
+}
+function Up() {
+  document.getElementById("td").style.color = "blue";
+}
+    function createTable()
+{
+rn = window.prompt("Input number of rows", 1);
+cn = window.prompt("Input number of columns",1);
+  
+ for(var r=0;r<parseInt(rn,10);r++)
+  {
+   var x=document.getElementById("td").insertRow(r);
+   for(var c=0;c<parseInt(cn,10);c++)  
+    {
+     var y=  x.insertCell(c);
+     y.innerHTML=""+r+"-"+c; 
+    }
+   }
+}
+</script>
+</head><body> 
+<table id="td" onmouseover="style.color='red'" onmouseout="style.color='black'" border="1"> 
+</table><form> 
+<input type="button" onclick="createTable()" value="table"> 
+</form></body></html>

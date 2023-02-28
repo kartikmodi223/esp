@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    fieldset{
+        text-align: center;
+    }
+    body {
+        background-color: rgb(235, 235, 205);
+    }
+    
+h1{
+    text-align: center;
+}
+
+    td {
+        padding: 10px;
+        border: 0ch;
+    }
+
+    hr {
+        border: 1px;
+    }
+
+    #tbl {
+        margin-block-end: 50px;
+    }
+</style>
+
+<body>
+<h1>JOB  APPLICATION FORM</h1>
+    <fieldset>
+        <legend>
+            basic imformation
+        </legend>
+        <table id="tbl1" align="center">
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" name="fName" id="fname" autocomplete="off" /><br>
+                <td>last Name</td>
+                <td><input type="text" name="lName" id="lname" autocomplete="off" /><br>
+                </td>
+            </tr>
+            <tr>
+                <td>designation</td>
+                <td><input type="text" name="designation" id="designation" autocomplete="off" /><br>
+                </td>
+                <td>address 1</td>
+                <td><input type="text" name="address1" id="address1" autocomplete="off" /><br>
+                </td>
+            </tr>
+            <tr>
+                <td>EMail</td>
+                <td><input type="text" name="email" id="email" autocomplete="off" /><br>
+                <td>address 2</td>
+                <td><input type="text" name="address2" id="address2" autocomplete="off" /><br>
+                </td>
+            </tr>
+            <tr>
+                <td>phone no.</td>
+                <td><input type="number" name="number" id="number" autocomplete="off" /><br>
+                </td>
+                <td>city</td>
+                <td><input type="text" name="city" id="city" autocomplete="off" /><br>
+            </tr>
+            <tr>
+                <td>gender:</td>
+                <td>
+                    <input type="radio" id="gender" name="zender" value="male">male
+                    <input type="radio" id="gender" name="zender" value="femele">female
+                    <input type="radio" id="other" name="zender" value="femele">other
+                </td>
+                <td>state</td>
+                <td>
+                    <select name="state" id="state">
+
+                        <option value="1">gujrat</option>
+                        <option value="2">bihar</option>
+                        <option value="3">rajesthan</option>
+                        <option value="4">maharast</option>
+                    </select>
+                </td>
+            </tr>
+            <td>realationship status</td>
+            <td>
+                <select name="status" id="status">
+
+                    <option value="1">single</option>
+                    <option value="2">merried</option>
+                </select>
+            </td>
+            <td>zip code</td>
+            <td><input type="number" name="number" id="number" autocomplete="off" /><br>
+                </tr>
+                <tr>
+                    <td align="right" colspan="3">date of birth</td>
+                    <td><input type="date" id="dob" name="dob">
+                </tr>
+        </table>
+    </fieldset>
+
+
+    <fieldset>
+        <legend>
+            accedemic imformation
+        </legend>
+        <table id="tbl2">
+            <div id="main">
+                <div class="sub">
+            <tr>
+                <td>
+                    <input type="text" id="coursename" name="coursename" placeholder="coursename">
+                </td>
+                <td>
+                    <input type="text" id="pass_year" name="pass_year" placeholder="passing year">
+                </td>
+                <td>
+                    <input type="text" id="board_name" name="board_name" placeholder="board name">
+                </td>
+
+                <td>
+                    <input type="text" id="percentage" name="percentage" placeholder="percentage">
+                </td>
+                <td>
+                    <input type="button" id="add_field" name=" add_field" value="+" >
+                </td>
+            </tr>
+          
+                </div>
+            </div>
+        </table><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>experience imformation
+        </legend>
+
+        <table id="tbl3">
+
+            <tr>
+                <td>
+                    company_name : <input type="text" id="company_name" name="cname">
+                </td>
+                <td>
+                    designation : <input type="text" id="percentage" name="designation">
+                </td>
+                <td>
+                    start date : <input type="date" id="pass_year" name="pass_year">
+                </td>
+                <td>
+                    end date : <input type="date" id="board_name" name="board_name">
+                </td>
+                <td>
+                    <input type="button" id="e_add_field" name="e_add_field" value="+">
+                </td>
+            </tr>
+            <div id="maine">
+                <div class="sube">
+                </div>
+            </div>
+        </table>
+
+        </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend> language known</legend>
+        <table id="tbl4">
+
+            <tr>
+                <td>
+                    hindi :
+                </td>
+                <td>
+                    <input type="checkbox" id="language">
+                </td>
+                <td>
+                    can speak :
+                    <input type="checkbox">
+                    can write:
+                    <input type="checkbox">
+                    can read :
+                    <input type="checkbox">
+                </td>
+
+            <tr>
+
+            <tr>
+                <td>
+                    english :
+                </td>
+                <td>
+                    <input type="checkbox" id="language">
+                </td>
+                <td>
+                    can speak :
+                    <input type="checkbox">
+                    can write:
+                    <input type="checkbox">
+                    can read :
+                    <input type="checkbox">
+                </td>
+
+            <tr>
+
+            <tr>
+                <td>
+                    gujarati :
+                </td>
+                <td>
+                    <input type="checkbox" id="language">
+                </td>
+                <td>
+                    can speak :
+                    <input type="checkbox">
+                    can write:
+                    <input type="checkbox">
+                    can read :
+                    <input type="checkbox">
+                </td>
+
+            <tr>
+        </table>
+    </fieldset>
+    <fieldset >
+
+        <legend>
+            technologies known
+        </legend>
+        <table id="tbl5">
+
+            <tr>
+                <td>php :
+                    <input type="checkbox" id="language">
+
+                    Beginer :
+                    <input type="radio" name="php" alue="beginner">
+                    Mideator:
+                    <input type="radio" name="php" value="beginner">
+                    Expert :
+                    <input type="radio" name="php" value="beginner">
+                </td>
+
+            </tr>
+            <tr>
+                <td>mysql :
+
+
+                    <input type="checkbox" id="language">
+
+                    Beginer :
+                    <input type="radio" name="mysql">
+                    Mideator:
+                    <input type="radio" name="mysql">
+                    Expert :
+                    <input type="radio" name="mysql">
+                </td>
+
+            </tr>
+            <tr>
+                <td>oracle :
+
+
+                    <input type="checkbox" id="language">
+
+                    Beginer :
+                    <input type="radio" name="oracle">
+                    Mideator:
+                    <input type="radio" name="oracle">
+                    Expert :
+                    <input type="radio" name="oracle">
+                </td>
+
+            </tr>
+            <tr>
+                <td>laravel :
+
+
+                    <input type="checkbox" id="language">
+
+                    Beginer :
+                    <input type="radio" name="laravel">
+                    Mideator:
+                    <input type="radio" name="laravel">
+                    Expert :
+                    <input type="radio" name="laravel">
+                </td>
+
+            </tr>
+        </table>
+    </fieldset>
+
+    
+    <fieldset>
+        <legend>Referance</legend>
+        <table id="tbl6">
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" id="r_name" name="r_name">
+                </td>
+                <td>Contact</td>
+                <td>
+                    <input type="text" id="r_contact" name="r_contact">
+                </td>
+                <td>relation</td>
+                <td>
+                    <input type="text" id="r_relation" name="r_relation">
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" id="r_name" name="r_name">
+                </td>
+                <td>Contact</td>
+                <td>
+                    <input type="text" id="r_contact" name="r_contact">
+                </td>
+                <td>relation</td>
+                <td>
+                    <input type="text" id="r_relation" name="r_relation">
+                </td>
+            </tr>
+        </table>
+        </legend>
+    </fieldset>
+    <fieldset>
+        <legend>
+            preferences
+        </legend>
+        <table id="tbl7">
+            <tr>
+                <td>
+                    prefered location:
+                </td>
+                <td>
+                    <select name="location" id="p_location">
+                        <option value="1"> ahmedabad</option>
+                        <option value="2"> mehsana</option>
+                        <option value="3"> patan</option>
+                    </select>
+                </td>
+                <td>currrent ctc</td>
+                <td> <input type="text" id="c_ctc" name="c_ctc"></td>
+            </tr>
+            <tr>
+                <td>expected ctc</td>
+                <td> <input type="text" id="e_ctc" name="e_ctc"></td>
+                <td>notice period</td>
+                <td> <input type="text" id="notice" name="notice"></td>
+            <tr>
+                <td align="center">
+                    select departmentL:
+                </td>
+                <td>
+                    <select name="" id="department">
+                        <option value="1"> devloper</option>
+                        <option value="2"> Qa</option>
+                        <option value="3"> designing</option>
+                    </select>
+                </td>
+            </tr>
+
+            </tr>
+        </table>
+    </fieldset>
+</body>
+<script src="form.js"></script>
+
+
+</html>

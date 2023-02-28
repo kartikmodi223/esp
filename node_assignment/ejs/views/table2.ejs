@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        div{
+        margin: 10px;
+        
+    }
+    button:hover {
+  background-color: rgb(144, 137, 247);
+}
+   button{
+    padding: 10px;
+    margin: 2px;
+   }
+   td,th{
+        padding: 20px;
+        border-radius: 5px;
+        background-color: bisque;
+        
+    }
+</style>
+<div id="div1" align="center">
+    <% if(currentpage==1){ %>
+    
+        <button><a href="/page?num=<%=currentpage-1%>" >preview</a></button>
+    
+        <% } %>
+    <%
+    for(let i=1; i< count;i++){
+        %>
+    
+    <% if(currentpage==i){ %>
+    
+    <a href="#" ><%=i%></a>
+    
+    <% }else{ %>
+    
+    <button><a href="/page?num=<%=i%>"><%=i%></a></button>
+        <% } %>
+        <% } %>
+        <% if(currentpage==count){ %>
+    
+            <button><a href="/page?num=<%=currentpage+1%>">next</a></button>
+
+            <% } %>
+<br>
+            <button><a href="">ASC</a></button>
+            <button><a href=""></a>DESC</button>
+        </div>
+    <div>
+        
+    <table border="1" align="center" id="mytable">
+        <tr>
+            <td><a href="http://localhost:8088/?num=1&sortorder=id&order_type=asc">id</a></td>
+            <td><a href="http://localhost:8088/?num=1&sortorder=fname&order_type=asc">fname</a></td>
+            <td><a href="http://localhost:8088/?num=1&sortorder=lname&order_type=asc">lname</a></td>
+            <td><a href="http://localhost:8088/?num=1&sortorder=email&order_type=asc">email</a></td>
+            <td><a href="http://localhost:8088/?num=1&sortorder=dob&order_type=asc">dob</a></td>
+        </tr>
+        <% data[1].forEach(entry=> { %>
+        <tr>
+            <td><%=entry.id%></td>
+            <td><%=entry.fname%></td>
+            <td><%=entry.lname%></td>
+            <td><%=entry.email%></td>
+            <td><%=entry.dob%></td>
+        </tr>
+        
+        <%})%>
+    </table>
+</div>
+</html>

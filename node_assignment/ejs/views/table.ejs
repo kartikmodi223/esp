@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<style>
+    div{
+        margin: 10px;
+        
+    }
+    button:hover {
+  background-color: rgb(144, 137, 247);
+}
+   button{
+    padding: 10px;
+   }
+   td,th{
+        padding: 20px;
+        border-radius: 5px;
+        background-color: bisque;
+        
+    }
+</style>
+<div id="div1" align="center">
+<% if(page!=1){ %>
+
+    <button><a href="/<%= page-1 %>" >preview</a></button>
+
+    <% } %>
+<%
+for(let i=0; i< pages.length;i++){
+    %>
+
+<% if(pages[i]===page){ %>
+
+<a href="#" ><%=pages[i]%></a>
+
+<% }else{ %>
+
+<button><a href="/<%= pages[i] %>"><%= pages[i] %></a></button>
+    <% } %>
+    <% } %>
+    <% if(page!==pages.length){ %>
+
+        <button><a href="/<%= page+1 %>" >next</a></button>
+    
+        <% } %>
+             
+    </div>
+<body>
+    <div class="table-data">
+
+    <table border="1" align="center">
+        <tr>
+            <th>id</th>
+            <th>fname</th>
+            <th>lname</th>
+            <th>email</th>
+            <th>dob</th>
+            </tr>
+        
+        <%
+        for(let i=0; i< data.length;i++){
+            %>
+        
+        <tr>
+            <td><%=data[i].id %></td>
+            <td><%=data[i].fname %></td>
+            <td><%=data[i].lname %></td>
+            <td><%=data[i].email %></td>
+            <td><%=data[i].dob %></td>
+           
+        </tr>
+      <% } %>
+    </table>
+    </div>
+    <table border="1" align="center">
+        <tr>
+            <th>id</th>
+            <th>fname</th>
+            <th>lname</th>
+            <th>email</th>
+            <th>dob</th>
+            </tr>
+        
+        <%
+        for(let j=0; j< data.length;j++){
+            %>
+        
+        <tr>
+            <td><%=data[j].id %></td>
+            <td><%=data[j].fname %></td>
+            <td><%=data[j].lname %></td>
+            <td><%=data[j].email %></td>
+            <td><%=data[j].dob %></td>
+           
+        </tr>
+      <% } %>
+    </table>
+   <!-- <div align="center">
+    <% if(page!=1){ %>
+
+        <button><a href="/<%= page-1 %>" >preview</a></button>
+    
+        <% } %>
+
+
+
+    <%
+        for(let i=0; i< pages.length;i++){
+            %>
+
+<% if(pages[i]===page){ %>
+
+    <a href="#" ><%=pages[i]%></a>
+
+    <% }else{ %>
+
+        <button align="center"><a href="/<%= pages[i] %>"><%= pages[i] %></a></button>
+
+       
+            <% } %>
+            <% } %>
+    
+            <% if(page!==pages.length){ %>
+
+                <button><a href="/<%= page+1 %>" >next</a></button>
+            
+                <% } %>              -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color change qube exercize</title>
+</head>
+<style>
+    td{
+        border-radius: 2px;
+        border-color: aliceblue;
+        
+    }
+    body {
+        background-color: coral;
+    }
+
+    #tbl {
+        height: 20cm;
+        width: 20cm;
+        background-color: rgb(241, 153, 153);
+        border-radius: 5px;
+        border-width: 5px;
+    }
+
+    #data1 {
+        border-radius: 2px;
+      
+        box-shadow: 2px;
+    }
+
+    #data2 {
+        border-radius: 3px;
+        height: 2cm;
+        width: 2cm;
+    }
+    #data3{
+        border-radius: 3px;
+        height: 2cm;
+        width: 2cm;
+    }
+
+    #expand1 {
+        font-size: 30px;
+        
+        
+    }
+
+    #expand2 {
+        font-size: 30px;
+        
+    }
+</style>
+
+<body>
+    <h1 align="center"> COLOR CHANGE QUBE GAME</h1>
+    <p id="expand1" align="center"></p>
+    <table id="tbl" align="center" border="1">
+        <tr>
+            <td id="data1" onclick="generate()"></td>
+        </tr>
+
+    </table>
+    <p id="expand2" align="center"></p>
+</body>
+<script>
+
+    function generateRandomColor() {
+        var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        return randomColor;
+
+    }
+
+    let count = 2;
+    let touchthetd = 0;
+
+    function generate() {
+
+
+
+        var kar1 = Math.floor(Math.random() * count) + 1;
+        var kar2 = Math.floor(Math.random() * count) + 1;
+
+
+        var kartik = "";
+        kartik += "<table >";
+        for (var k = 1; k <= count; k++) {
+            kartik += "<tr>";
+            for (var m = 1; m <= count; m++)
+                if (kar1==k && kar2==m) 
+                {
+                    kartik += "<td onclick='generate() '  id='data2'>" + "</td>";
+
+                }else{
+                    kartik += "<td id='data3'>" + "</td>";
+                }
+            kartik += "</tr>";
+
+
+        } kartik += "</table>";
+        touchthetd++;
+        count++;
+        document.getElementById("expand2").innerHTML = "your current score is  " + touchthetd;
+        document.getElementById("tbl").innerHTML = kartik;
+        document.getElementById('tbl').style.backgroundColor = generateRandomColor();
+        document.getElementById('data2').style.backgroundColor = generateRandomColor();
+        document.getElementById('data2').style.opacity = 0.5;
+        document.getElementById("data1").style.visibility = hidden;
+
+      
+    }
+
+    var timeLeft = 30;
+    var elem = document.getElementById('expand1');
+
+    var timerId = setInterval(countdown, 1000);
+
+    function countdown() {
+        if (timeLeft == -1) {
+            alert("your score " + touchthetd);
+            clearTimeout(timerId);
+            doSomething();
+        } else {
+            elem.innerHTML = timeLeft + ' seconds remaining';
+            timeLeft--;
+
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: coral;
+    }
+
+    #tbl {
+        height: 14cm;
+        width: 14cm;
+        background-color: rgb(253, 253, 253);
+        border-radius: 2px;
+    }
+
+    #data1 {
+        border-radius: 2px;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    #data2 {
+        border-radius: 2px;
+    }
+
+    #data2 {
+        border-radius: 2px;
+    }
+
+    #expand {
+        font-size: large;
+    }
+
+    #data1 {
+
+        font-size: larger;
+        font-weight: 500;
+        text-align: center;
+        border-radius: 5%;
+        background-color: #ecb92b;
+        color: #CC3636;
+    }
+
+    #table {
+        height: 17cm;
+        width: 17cm;
+
+    }
+
+    #data3 {
+        font-size: larger;
+        text-align: center;
+        border-color: #FEFBF6;
+        border-radius: 5%;
+        font-weight: 500;
+        color: aqua;
+        background-color: #718354;
+    }
+
+    #data2 {
+        font-size: larger;
+        text-align: center;
+        border-color: #FEFBF6;
+        border-radius: 5%;
+        font-weight: 500;
+        background-color: #A4BE7B;
+        color: #CC3636;
+    }
+
+
+</style>
+
+<body>
+    <h1 align="center"> color change queb</h1>
+    <p id="expand1" align="center"></p>
+    <table id="tbl" align="center" border="1">
+        <tr>
+            <td id="data1" onclick="generate()"></td>
+        </tr>
+
+    </table>
+    <p id="expand" align="center"></p>
+</body>
+<script>
+
+    function generateRandomColor() {
+        var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        return randomColor;
+
+    }
+
+    let count = 2;
+    let touchthetd = 0;
+
+    function generate() {
+        let kar1 = Math.floor(Math.random() * count) + 1;
+        let kar2 = Math.floor(Math.random() * count) + 1;
+        var kartik = "";
+        kartik += "<table >";
+        for (var k = 1; k <= count; k++) {
+            kartik += "<tr>";
+            for (var m = 1; m <= count; m++)
+
+                if (kar1 == k && kar2 == m) {
+                    kartik += "<td onclick='generate()' id = 'data2' >" + "</td>";
+                }
+                else {
+                    kartik += "<td id='data3' style= >" + "</td>";
+                }
+        }
+        kartik += "</tr>";
+
+
+    } kartik += "</table>";
+    touchthetd++;
+    count++;
+   
+    document.getElementById("tbl").innerHTML = kartik;
+    // document.getElementById('tbl').style.backgroundColor = generateRandomColor();
+    // document.getElementById('data2').style.backgroundColor = generateRandomColor();
+    
+    // document.getElementById("data1").style.visibility = hidden;
+
+    document.getElementById("expand").innerHTML = "your score is  " + touchthetd;
+
+    
+    var timeLeft = 30;
+    var elem = document.getElementById('expand1');
+
+    var timerId = setInterval(countdown, 1000);
+
+    function countdown() {
+        if (timeLeft == -1) {
+            clearTimeout(timerId);
+            doSomething();
+        } else {
+            elem.innerHTML = timeLeft + ' seconds remaining';
+            timeLeft--;
+        }
+    }
+</script>
+
+</html>
