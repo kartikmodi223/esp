@@ -472,7 +472,7 @@ app.get('/edit', async (req, res) => {
 app.post('/update', function (req, res, next) {
 
   const data = req.body;
-  const id =data.id;
+  const id = data.id;
   var query = `
 	UPDATE basic_info 
 	SET first_name ="${data.first_name}", 
@@ -504,8 +504,8 @@ app.post('/update', function (req, res, next) {
     const passingyear = req.body.passingYear;
     const pr = req.body.percentage;
 
-    db.query(`delete from acadamics where applicant_id=${id}`,(err,result)=>{
-      if(err) throw err;
+    db.query(`delete from acadamics where applicant_id=${id}`, (err, result) => {
+      if (err) throw err;
       console.log("edu deleted");
     });
     applicantId = id;
@@ -529,14 +529,14 @@ app.post('/update', function (req, res, next) {
         });
       }
     }
-    
 
 
 
-    db.query(`delete from work_experience where applicant_id = ${id}`,(err,result)=>{
-      if(err) throw err;
+
+    db.query(`delete from work_experience where applicant_id = ${id}`, (err, result) => {
+      if (err) throw err;
       console.log("work experience deleted!");
-     })
+    })
     const c_name = req.body.company_name;
     const desig = req.body.jobtitle;
     const start = req.body.start_date;
@@ -564,11 +564,11 @@ app.post('/update', function (req, res, next) {
         });
       }
     }
-    db.query(`delete from work_experience where applicant_id = ${id}`,(err,result)=>{
-      if(err) throw err;
+    db.query(`delete from work_experience where applicant_id = ${id}`, (err, result) => {
+      if (err) throw err;
       console.log("work experience deleted!");
-     })
-  
+    })
+
     console.log(desig);
     console.log(start);
     console.log(end);
@@ -592,8 +592,8 @@ app.post('/update', function (req, res, next) {
       }
     }
 
-    db.query(`delete from LanguagesKnown where applicant_id=${id}`,(err,result)=>{
-      if(err) throw err;
+    db.query(`delete from LanguagesKnown where applicant_id=${id}`, (err, result) => {
+      if (err) throw err;
     });
     var applicantId = id;
     var lang = req.body.Language;
@@ -630,9 +630,9 @@ app.post('/update', function (req, res, next) {
     }
 
     //getting technology
-  db.query(`delete from skills where applicant_id = ${id}`,(err,result)=>{
-    if(err) throw err;
-  });
+    db.query(`delete from skills where applicant_id = ${id}`, (err, result) => {
+      if (err) throw err;
+    });
     const skills = req.body.technology;
     const lavel = req.body[skills + "a"];
     console.log("skills " + skills);

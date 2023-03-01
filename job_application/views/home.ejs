@@ -35,7 +35,8 @@
       cursor: pointer;
       float: right;
     }
-    button{
+
+    button {
       background-color: #04AA6D;
       color: white;
       padding: 12px 20px;
@@ -77,10 +78,6 @@
     input {
       background-color: rgb(254, 254, 254);
     }
-
-
-
-
     fieldset {
       text-align: center;
 
@@ -130,7 +127,6 @@
     #tbl {
       margin-block-end: 50px;
     }
-
   </style>
 </head>
 
@@ -185,8 +181,10 @@
           <select name="state" id="state">
             <option value="">select any</option>
             <% state_master.forEach((state)=>{ %>
-              <option value="<%= state.id %>"><%= state.name %></option>
-            <% }); %>
+              <option value="<%= state.id %>">
+                <%= state.name %>
+              </option>
+              <% }); %>
           </select>
 
           <label for="city">Select a city:</label>
@@ -364,6 +362,7 @@
     </fieldset>
     </div>
     <div>
+      <br>
       <input class="qa" id="submit" type="submit" value="submit" />
     </div>
   </form>
@@ -412,7 +411,7 @@
 
 
 
-const stateSelect = document.querySelector('#state');
+  const stateSelect = document.querySelector('#state');
   const citySelect = document.querySelector('#city');
 
   stateSelect.addEventListener('change', () => {
@@ -439,7 +438,7 @@ const stateSelect = document.querySelector('#state');
     }
   });
 
-  
+
 </script>
 
 </html>
