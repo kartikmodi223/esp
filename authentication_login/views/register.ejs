@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register User</title>
+    <title>Registe</title>
 
 </head>
 <link rel="stylesheet" href="/css/main.css">
@@ -17,45 +17,191 @@
 
         <div class="container">
             <div class="bg">
-                <form action="/register" method="post">
+                <form action="/register" method="post" name="form1" id="form1">
                     <div class="logo">
                         <img src="/img/logo.svg" alt="">
                         <h2>welcome back !</h2>
                     </div>
                     <div>
                         <label for="name">Name:</label>
-                        <input type="text" name="name" placeholder="Enter Name">
+                        <input type="text" name="name" id="name" placeholder="Enter Name" onchange="checkname()">
+                        <span id="pname"></span>
                     </div>
 
                     <div>
                         <label for="email">Email</label>
-                        <input type="text" name="email" placeholder="Enter Email">
+                        <input type="text" name="email" id="email" placeholder="Enter Email" onchange="checkmail()">
+                        <span id="pemail"></span>
                     </div>
 
                     <div>
                         <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="Enter Password">
+                        <input type="password" name="password" id="password"
+                            placeholder="Enter Password of 6 character">
+                        <span id="ppassword" onchange="checkpassword()"></span>
+
                     </div>
                     <div>
                         <label for="cpassword">Confirm Password</label>
-                        <input type="password" name="cpassword" placeholder="Re Enter Password">
+                        <input type="password" name="cpassword" id="cpassword" placeholder="Re Enter above Password"
+                            onchange="checkcpassword()">
+                        <span id="pcpassword"></span>
                     </div>
                     <div>
-                        <input type="submit" value="Register">
+                        <input type="submit" value="Register" id="sub" disabled>
                         <!-- <button> <a href="/login">login</a></button> -->'
-                        <p>don't have any account <a href="/login">sign up here</a></p>
+
+                        <p>alredy have any account <a href="/login">login here</a></p>
                     </div>
                 </form>
             </div>
 
-   
-                <img src="/img/bottom-logo.png" class="logo2" alt="">
-            
+
+            <img src="/img/bottom-logo.png" class="logo2" alt="">
+
         </div>
-    
-
     </section>
-
 </body>
+<script>
+    // function validateform()
+    // {
+    //     var email = document.form1.email.value;
+    //     var name = document.form1.name.value;
+    //     var fpassword = document.form1.password.value;
+    //     var cpassword = document.form1.cpassword.value;
+
+
+    //     var atposition = email.indexOf("@");
+    //     var dotposition = email.lastIndexOf(".");
+
+
+
+
+    //     if (name == "") {
+    //         document.getElementById("pname").innerHTML = " name can not empthy";
+    //         return false;
+    //     }
+    //     else if (name.length < 2 || name.length > 10) {
+    //         document.getElementById("pname").innerHTML = " Please enter valid name";
+    //         return false;
+    //     }
+    //     else if (!isNaN(name)) {
+    //         document.getElementById("pname").innerHTML = " name only contain alphabate ";
+    //         return false;
+    //     }
+    //     else if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+    //         document.getElementById("pemail").innerHTML = " Please enter valid email";
+    //         return false;
+    //     }
+    //     else if (email == "") {
+    //         document.getElementById("pemail").innerHTML = " name can not empthy";
+    //         return false;
+    //     }
+
+    //     else if (fpassword.length != 6) {
+    //         document.getElementById("ppassword").innerHTML = "password must be of 6 charecter !"
+    //         return false;
+    //     }
+    //     else if (fpassword != cpassword) {
+    //         document.getElementById("pcpassword").innerHTML = "password must be same !"
+    //         return false;
+    //     }
+    //     else {
+    //         return true;
+    //     }
+    // }
+    if (name == "" || email == "" || password == "") {
+        document.getElementById("sub").disabled = true;
+    }
+
+    function checkname() {
+        document.getElementById("sub").disabled = true;
+        var name = document.form1.name.value;
+
+        if (name == "") {
+            document.getElementById("pname").innerHTML = " name can not empthy";
+            return false;
+        }
+        else if (name.length < 2) {
+            document.getElementById("pname").innerHTML = " Please enter valid name";
+            return false;
+        }
+        else {
+            document.getElementById("sub").disabled = false;
+            document.getElementById("pname").innerHTML = null;
+            return true;
+
+
+        }
+    }
+
+    function checkmail() {
+        document.getElementById("sub").disabled = true;
+        var email = document.form1.email.value;
+
+        var atposition = email.indexOf("@");
+        var dotposition = email.lastIndexOf(".");
+
+        if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+            document.getElementById("pemail").innerHTML = " Please enter valid email";
+            return false;
+        }
+        else if (email == "") {
+            document.getElementById("pemail").innerHTML = " name can not empthy";
+            return false;
+        }
+        else {
+            document.getElementById("sub").disabled = false;
+            document.getElementById("pemail").innerHTML = "";
+            return true;
+
+
+
+        }
+    }
+
+
+
+    function checkpassword() {
+        document.getElementById("sub").disabled = true;
+
+        var fpassword = document.form1.password.value;
+        var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+
+
+        if (!(fpassword.match(paswd))) {
+            document.getElementById("ppassword").innerHTML = "password contain latter digit and symbol "
+        }
+
+        else {
+            document.getElementById("sub").disabled = false;
+            document.getElementById("ppassword").innerHTML = "";
+            return true;
+
+
+        }
+    }
+
+    function checkcpassword() {
+        document.getElementById("sub").disabled = true;
+        var fpassword = document.form1.password.value;
+        var cpassword = document.form1.cpassword.value;
+
+        if (fpassword != cpassword) {
+            document.getElementById("pcpassword").innerHTML = "password must be same !"
+            return false;
+        }
+        else {
+            document.getElementById("sub").disabled = false;
+            document.getElementById("ppassword").innerHTML = "";
+            return true;
+
+
+
+        }
+    }
+
+
+</script>
 
 </html>

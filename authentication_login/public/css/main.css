@@ -65,11 +65,11 @@ input[type=text],input[type=email],input[type=password] ,select {
   
   div {
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
   }
   p{
     color: #ccc;
-    padding-top: 50px;  }
+    padding-top: 30px;  }
   label{
     color: #ccc;
   }
@@ -86,4 +86,8 @@ a{
     position: relative;
     bottom: 10px;
     height: 10px;
+}
+span{
+color: red;
+font-weight: bold;
 }
