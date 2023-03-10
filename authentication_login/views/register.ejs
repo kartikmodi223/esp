@@ -30,21 +30,22 @@
 
                     <div>
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" placeholder="Enter Email" onchange="checkmail()">
+                        <input type="text" name="email" id="email" placeholder="Enter Email" required
+                            onchange="checkmail()">
                         <span id="pemail"></span>
                     </div>
 
                     <div>
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password"
-                            placeholder="Enter Password of 6 character">
-                        <span id="ppassword" onchange="checkpassword()"></span>
+                        <input type="password" name="password" id="password" placeholder="Enter Password" required
+                            onchange="checkpassword()">
+                        <span id="ppassword"></span>
 
                     </div>
                     <div>
                         <label for="cpassword">Confirm Password</label>
                         <input type="password" name="cpassword" id="cpassword" placeholder="Re Enter above Password"
-                            onchange="checkcpassword()">
+                            required onchange="checkcpassword()">
                         <span id="pcpassword"></span>
                     </div>
                     <div>
@@ -110,9 +111,9 @@
     //         return true;
     //     }
     // }
-    if (name == "" || email == "" || password == "") {
-        document.getElementById("sub").disabled = true;
-    }
+    // if (name == "" || email == "" || password == "") {
+    //     document.getElementById("sub").disabled = true;
+    // }
 
     function checkname() {
         document.getElementById("sub").disabled = true;
@@ -128,38 +129,66 @@
         }
         else {
             document.getElementById("sub").disabled = false;
-            document.getElementById("pname").innerHTML = null;
+            document.getElementById("pname").innerHTML = "";
             return true;
 
 
         }
     }
 
-    function checkmail() {
-        document.getElementById("sub").disabled = true;
-        var email = document.form1.email.value;
+    // function checkmail() {
+    //     document.getElementById("sub").disabled = true;
+    //     var email = document.form1.email.value;
 
+    //     var atposition = email.indexOf("@");
+    //     var dotposition = email.lastIndexOf(".");
+
+    //     if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+    //         document.getElementById("pemail").innerHTML = " Please enter valid email";
+    //         return false;
+    //     }
+    //     else if (email == "") {
+    //         document.getElementById("pemail").innerHTML = " name can not empthy";
+    //         return false;
+    //     }
+    //     else {
+    //         document.getElementById("sub").disabled = false;
+    //         document.getElementById("pemail").innerHTML = "";
+    //         return true;
+
+
+
+    //     }
+    // }
+    function checkmail() {
+        var email = document.form1.email.value;
         var atposition = email.indexOf("@");
         var dotposition = email.lastIndexOf(".");
 
-        if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
-            document.getElementById("pemail").innerHTML = " Please enter valid email";
-            return false;
-        }
-        else if (email == "") {
-            document.getElementById("pemail").innerHTML = " name can not empthy";
-            return false;
-        }
-        else {
-            document.getElementById("sub").disabled = false;
-            document.getElementById("pemail").innerHTML = "";
-            return true;
+        fetch(`/finduser?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                const message = document.getElementById('pemail');
+                console.log(data)
+                if (data.exists) {
+                    message.innerHTML = "Email Already Exist";
 
+                }
+                else if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+                    document.getElementById("pemail").innerHTML = " Please enter valid email";
 
+                }
+                else if (email == "") {
+                    document.getElementById("pemail").innerHTML = " name can not empthy";
 
-        }
+                }
+                else {
+                    message.textContent = '';
+
+                }
+            })
+            .catch(err => console.log(err));
     }
-
 
 
     function checkpassword() {
@@ -169,9 +198,19 @@
         var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
 
 
-        if (!(fpassword.match(paswd))) {
-            document.getElementById("ppassword").innerHTML = "password contain latter digit and symbol "
+        if (!(paswd.test(fpassword))) {
+            document.getElementById("ppassword").innerHTML = "password must contain latter digit and symbol "
+            return false;
         }
+        else if (fpassword.length > 14) {
+            document.getElementById("ppassword").innerHTML = "to0 large "
+            return false;
+        }
+        else if (fpassword.length < 6) {
+            document.getElementById("ppassword").innerHTML = "to0 big "
+            return false;
+        }
+
 
         else {
             document.getElementById("sub").disabled = false;
@@ -193,13 +232,14 @@
         }
         else {
             document.getElementById("sub").disabled = false;
-            document.getElementById("ppassword").innerHTML = "";
+            document.getElementById("pcpassword").innerHTML = "";
             return true;
 
 
 
         }
     }
+
 
 
 </script>

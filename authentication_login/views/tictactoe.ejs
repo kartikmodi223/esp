@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    
+</head>
+
+<body>
+    <h1 align="center"> TIC TAC TOE</h1>
+
+    <table align="center" border="1">
+        <tr>
+            <td class="modi" id="kartik1" onclick="move(this)"></td>
+            <td class="modi" id="kartik2" onclick="move(this)"></td>
+            <td class="modi" id="kartik3" onclick="move(this)"></td>
+        </tr>
+        <tr>
+            <td class="modi" id="kartik4" onclick="move(this)"></td>
+            <td class="modi" id="kartik5" onclick="move(this)"></td>
+            <td class="modi" id="kartik6" onclick="move(this)"></td>
+        </tr>
+        <tr>
+            <td class="modi" id="kartik7" onclick="move(this)"></td>
+            <td class="modi" id="kartik8" onclick="move(this)"></td>
+            <td class="modi" id="kartik9" onclick="move(this)"></td>
+        </tr>
+    </table><br>
+    <form align="center">
+        <input type="reset" name="reset" onclick="resetgame()" id="reset" value="reset" /><br><br>
+        <span id="countermessege"></span>
+    </form>
+
+
+    <script>
+
+        var mkartik = 1;
+
+        function move(mkartik2) {
+            if (mkartik2.innerHTML == "") 
+            {
+                if (mkartik % 2 != 0) 
+                {
+                    document.getElementById(mkartik2.id).innerHTML = "0";
+                    document.getElementById(mkartik2.id).style.backgroundColor = "white";
+                    document.getElementById("countermessege").innerHTML = "player 2's turn"
+                   
+                }
+                else 
+                {
+                    document.getElementById(mkartik2.id).innerHTML = "x";
+                    document.getElementById(mkartik2.id).style.backgroundColor = "silver";
+                    document.getElementById("countermessege").innerHTML = "player 1's turn"
+
+                } mkartik++;
+            }
+
+            if (checkthewinner()) 
+            {document.getElementById("countermessege").innerHTML = "you won";
+                alert("you won the match");
+                
+                resetgame();
+
+
+            }
+            if (mkartik >= 10) 
+            {
+                alert("please reset the game");
+                resetgame();
+            }
+        }
+
+        function resetgame() 
+        {
+            for (var m = 1; m <= 9; m++) {
+                document.getElementById('kartik' + m).innerHTML = "";
+                document.getElementById('kartik' + m).style.backgroundColor = "";
+                document.getElementById("countermessege").innerHTML = "";
+            }
+            mkartik = 1;
+        }
+
+        function simplify(kartik) 
+        {
+            return document.getElementById(kartik).innerHTML;
+        }
+
+        function checkwincondition(kartik1, kartik2, kartik3) 
+        {
+            if ((simplify(kartik1) == simplify(kartik2) && simplify(kartik2) == simplify(kartik3))
+                && (simplify(kartik1) != "" && simplify(kartik2) != "" && simplify(kartik3) != "")) {
+                return true;
+            }
+        }
+
+        function checkthewinner() 
+        {
+            if (checkwincondition('kartik1', 'kartik2', 'kartik3') ||
+                checkwincondition('kartik4', 'kartik5', 'kartik6') ||
+                checkwincondition('kartik7', 'kartik8', 'kartik9') ||
+                checkwincondition('kartik1', 'kartik4', 'kartik7') ||
+                checkwincondition('kartik2', 'kartik5', 'kartik8') ||
+                checkwincondition('kartik3', 'kartik6', 'kartik9') ||
+                checkwincondition('kartik1', 'kartik5', 'kartik9') ||
+                checkwincondition('kartik3', 'kartik5', 'kartik7')) {
+                return true;
+
+            }
+        }
+    </script>
+</body>
+
+</html>

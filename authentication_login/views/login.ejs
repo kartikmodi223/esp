@@ -12,31 +12,96 @@
 <body>
     <div class="container">
         <div class="bg">
-            <form action="/login" method="post">
+            <form action="/login" method="post" name="form2">
                 <div>
                     <h2>welcome back !</h2>
                 </div>
 
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" name="email" placeholder="Enter Email" required>
+                    <input type="text" name="email" id="email" placeholder="Enter Email" required
+                        onchange="checkmail()">
+                    <span id="pemail"></span>
                 </div>
                 <div>
                     <label for="password">Password</label>
                     <input type="password" name="password" placeholder="Enter Password" required>
+                    <span id="ppassword"></span>
                 </div>
                 <div>
                     <p>forgote password <a href="/forgotpass">click here</a></p>
                 </div>
                 <div>
-                    <input type="submit" value="Login">
-                   
+                    <input type="submit" name="sub" id="sub" value="Login" disabled>
+
                 </div>
 
             </form>
-       
+
         </div>
     </div>
 </body>
+<script>
+    function checkmail() {
+        document.getElementById("sub").disabled = true;
+        var email = document.form2.email.value;
+        // var password = document.form1.password.value;
+
+        fetch(`/finduserlogin?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                const message = document.getElementById('pemail');
+
+                console.log(data)
+                if (!(data.exists)) {
+                    message.innerHTML = "creditial not Exist";
+                    return false;
+                }
+
+                else {
+                    message.textContent = '';
+                    document.getElementById("sub").disabled = false;
+                    return true;
+
+
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
+
+    function checkpassword() {
+
+        const password = req.query.password;
+        const email = req.query.email;
+
+        
+        // var password = document.form1.password.value;
+
+        fetch(`/finduserlogin?email=${email}&password=${password}`)
+            .then(res => res.json())
+            .then(data => {
+                const message = document.getElementById('pemail');
+
+                console.log(data)
+                if (!(data.exists)) {
+                    message.innerHTML = "creditial not Exist";
+                    return false;
+                }
+
+                else {
+                    message.textContent = '';
+                    document.getElementById("sub").disabled = false;
+                    return true;
+
+
+                }
+            })
+            .catch(err => console.log(err));
+    }
+     
+
+
+</script>
 
 </html>
