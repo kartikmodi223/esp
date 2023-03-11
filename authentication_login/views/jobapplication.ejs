@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    input[type=text],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    label {
+      padding: 12px 12px 12px 0;
+      display: inline-block;
+    }
+
+    input[type=submit] {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    button {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: center;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .col-25 {
+      float: left;
+      width: 25%;
+      margin-top: 6px;
+    }
+
+    .col-75 {
+      float: left;
+      width: 75%;
+      margin-top: 6px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    input {
+      background-color: rgb(254, 254, 254);
+    }
+    fieldset {
+      text-align: center;
+
+      background-color: rgb(235, 235, 205);
+      /* border: 10px;; */
+
+    }
+
+    body {
+      background-color: rgb(235, 235, 205);
+    }
+
+    legend {
+      font-style: italic;
+      font-size: larger;
+    }
+
+    #kar {
+      padding: 20px;
+    }
+
+    /* .qa {
+      padding: 10px;
+    } */
+
+    li {
+      padding: 10px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    td {
+      padding: 10px;
+      border: 0ch;
+    }
+
+    div {
+      padding: 20px;
+    }
+
+    hr {
+      border: 1px;
+    }
+
+    #tbl {
+      margin-block-end: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Job Appliaction Form</h1>
+  <form action="/table" method="post">
+
+    <button class="qa" align="center
+    "> <a href="/table"> show detail</a></button>
+    <fieldset>
+      <legend>Basic Info</legend>
+      <div class="baseinfo">
+        <div class="block">
+          <label for="fname">First Name:</label>
+          <input type="text" id="fname" name="first_name" />
+          <label for="lname">Last Name:</label>
+          <input type="text" id="lname" name="last_name" />
+        </div>
+
+        <div class="gender">
+          <label for="gender">Gender:</label>
+          <input type="radio" id="male" name="gender" value="male" />
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">Female</label>
+          <input type="radio" id="other" name="gender" value="other" />
+          <label for="other">other</label>
+          <br /><br />
+
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" />
+        </div>
+
+        <div class="block">
+          <label for="designation">Desigation:</label>
+          <input type="text" id="designation" name="job_designation" />
+
+          <label for="address1">Address:</label>
+          <input type="text" id="address1" name="address1" />
+        </div>
+
+        <div class="block">
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" />
+        </div>
+
+        <div class="block">
+          <label for="phone">Phone:</label>
+          <input type="text" id="phone" name="phone" />
+
+          <label for="state">select a state:</label>
+          <select name="state" id="state">
+            <option value="">select any</option>
+            <% state_master.forEach((state)=>{ %>
+              <option value="<%= state.id %>">
+                <%= state.name %>
+              </option>
+              <% }); %>
+          </select>
+
+          <label for="city">Select a city:</label>
+          <select id="city" name="city">
+            <option value="">select</option>
+          </select>
+
+          <label for="zipcode">Zipcode:</label>
+          <input type="text" id="zipcode" name="zip" />
+        </div>
+
+        <div>
+          <label for="status">Relationship Status:</label>
+          <select name="relation_status" id="status">
+            <%relation.forEach(function(rel){%>
+              <option value="<%=rel.option_name%>">
+                <%=rel.option_name%>
+              </option>
+              <%});%>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="form-group">
+      <fieldset>
+        <legend>Education Details</legend>
+        <div id="education" class="block">
+          <div class="education-item">
+            <select name="course">
+              <%course.forEach(function(c) {%>
+                <option value="<%=c.option_name%>">
+                  <%=c.option_name%>
+                </option>
+                <%});%>
+            </select>
+            <label for="boardName">Name of Board</label>
+            <input type="text" name="board" class="board" />
+            <label for="passingYear">Passing Year</label>
+            <input type="text" name="passingYear" />
+            <label for="percentage">percentage</label>
+            <input type="text" name="percentage" />
+          </div>
+        </div>
+        <button type="button" id="add-education-button">+</button>
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <fieldset>
+        <legend>Work Experience</legend>
+        <div id="experience">
+          <div id="experience-details">
+            <label for="company-name">Comapany Name</label>
+            <input type="text" id="company_name" name="company_name" />
+            <label for="designation">Designation:</label>
+            <input type="text" name="jobtitle" />
+            <label for="start-date">Form:</label>
+            <input type="date" id="start-date" name="start_date" />
+            <label for="end-date">To:</label>
+            <input type="date" id="end-date" name="end_date" />
+          </div>
+        </div>
+        <button type="button" id="add-experience-button">+</button>
+      </fieldset>
+    </div>
+    <div class="form-grop">
+      <fieldset>
+        <legend>known Language</legend>
+        <%language.forEach(function(lan) {%>
+          <div>
+            <label for="<%=lan.option_name%>">
+              <%=lan.option_name%>:
+            </label>
+            <input type="checkbox" value="<%=lan.option_name%>" name="Language" />
+            <label for="read">Read:</label>
+            <input type="checkbox" name="<%=lan.option_name%>read" value="yes" />
+            <label for="write">Write:</label>
+            <input type="checkbox" name="<%=lan.option_name%>write" value="yes" />
+            <label for="speak">Speak:</label>
+            <input type="checkbox" name="<%=lan.option_name%>speak" value="yes" />
+          </div>
+          <%});%>
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <fieldset>
+        <legend>known technology</legend>
+        <% tec.forEach(function(t) {%>
+          <div>
+            <label for="<%=t.option_name%>">
+              <%=t.option_name%>
+            </label>
+            <input type="checkbox" value="<%=t.option_name%>" name="technology" />
+            <label for="beginner">Beginner</label>
+            <input type="radio" name="<%=t.option_name%>a" value="beginner" />
+            <label for="beginner">Intermediate</label>
+            <input type="radio" name="<%=t.option_name%>a" value="Intermediate" />
+            <label for="beginner">Expert</label>
+            <input type="radio" name="<%=t.option_name%>a" value="Expert" />
+          </div>
+          <%});%>
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <fieldset>
+        <legend>Reference Contact</legend>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="rname" />
+          <label for="contact">Contact No</label>
+          <input type="text" name="rcontact" />
+          <label for="relation">Relation</label>
+          <input type="text" name="relation" />
+        </div>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="rname" />
+          <label for="contact">Contact No</label>
+          <input type="text" name="rcontact" />
+          <label for="relation">Relation</label>
+          <input type="text" name="relation" />
+        </div>
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <fieldset id="kar">
+        <legend>Preferances</legend>
+
+        <!-- <li>Prefered Location</li>
+            <select name="location">
+              <%location.forEach(function(loc) {%>
+                <option value="<%=loc.option_name%>">
+                  <%=loc.option_name%>
+                </option>
+                <%});%>
+            </select>
+          </ul>
+        </div>
+        <div> -->
+
+        <!-- <li>Prefered Location</li> -->
+        <td> location :<select name="location">
+            <%location.forEach(function(loc) {%>
+              <option value="<%=loc.option_name%>">
+                <%=loc.option_name%>
+              </option>
+              <%});%>
+          </select></td>
+        </ul>
+        <td> <label for="notice">Notice Period</label>
+          <input type="text" name="notice" />
+        </td>
+        <td><label for="expected">Expected CTC</label>
+          <input type="text" name="expected_ctc" id="expected" />
+        </td>
+        <label for="department">Department</label>
+        <select name="department">
+          <% dep.forEach(function(d) {%>
+            <option value="<%=d.option_name%>">
+              <%=d.option_name%>
+            </option>
+            <%});%>
+        </select>
+    </div>
+    <div>
+      <!-- <label for="department">Department</label>
+          <select name="department">
+            <% dep.forEach(function(d) {%>
+              <option value="<%=d.option_name%>">
+                <%=d.option_name%>
+              </option>
+              <%});%>
+          </select> -->
+    </div>
+    </fieldset>
+    </div>
+    <div>
+      <br>
+      <input class="qa" id="submit" type="submit" value="submit" />
+    </div>
+  </form>
+  <!-- <button onclick="location.href='/views'">View</button> -->
+</body>
+<script>
+  const educationDetails = document.getElementById("education");
+  const addEducationButton = document.getElementById("add-education-button");
+  addEducationButton.addEventListener("click", function () {
+    const educationItem = document.createElement("div");
+    educationItem.classList.add("education-item");
+    educationItem.innerHTML = `
+          <select name="course">
+              <%course.forEach(function(c) {%>
+              <option value="<%=c.option_name%>"><%=c.option_name%></option>
+              <%});%>
+            </select>
+            <label for="boardName">Name of Board</label>
+            <input type="text" name="board" class="board" />
+            <label for="passingYear">Passing Year</label>
+            <input type="text" name="passingYear" />
+            <label for="percentage">percentage</label>
+            <input type="text" name="percentage" />
+  `;
+    educationDetails.appendChild(educationItem);
+  });
+  const experience = document.getElementById("experience");
+  const addExperienceButton = document.getElementById(
+    "add-experience-button"
+  );
+  addExperienceButton.addEventListener("click", function () {
+    const experienceItem = document.createElement("div");
+    experienceItem.classList.add("experience-details");
+    experienceItem.innerHTML = `
+    <label for="company-name">Comapany Name</label>
+          <input type="text" id="company-name" name="company_name"/>
+          <label for="designation">Designation:</label>
+          <input type="text" id="designation" name="designation"/>
+          <label for="start-date">From:</label>
+          <input type="date" id="start-date" name="start_date" />
+          <label for="end-date">To:</label>
+          <input type="date" id="end-date" name="end_date" />
+    `;
+    experience.appendChild(experienceItem);
+  });
+
+
+
+  const stateSelect = document.querySelector('#state');
+  const citySelect = document.querySelector('#city');
+
+  stateSelect.addEventListener('change', () => {
+    const stateId = stateSelect.value;
+
+    if (stateId !== '') {
+      citySelect.disabled = false;
+
+      fetch(`/city_master/${stateId}`)
+        .then(response => response.json())
+        .then(city_master => {
+          citySelect.innerHTML = '';
+
+          city_master.forEach(city => {
+            const option = document.createElement('option');
+            option.value = city.id;
+            option.textContent = city.name;
+            citySelect.appendChild(option);
+          });
+        });
+    } else {
+      citySelect.disabled = true;
+      citySelect.innerHTML = '<option value="">Please select a country first</option>';
+    }
+  });
+
+
+</script>
+
+</html>

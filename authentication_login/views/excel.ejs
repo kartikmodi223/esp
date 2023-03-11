@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #userid{
+      width: 20%;
+      height: 30%;
+      border: #04AA6D;
+      font-weight: 300;
+    }
+    div {
+  width: 70%;
+  padding: 10px;
+  margin: auto;
+  border: 10px;
+    }
+
+    #submit{
+      background-color: #04AA6D;
+      color: rgb(28, 17, 17);
+      padding: 12px 20px;
+    
+      border-radius: 4px;
+      cursor: pointer;
+      float: center;
+      align-items:center;
+      width: 10%;
+      padding: 10px;
+      margin: auto;
+      align-content: center;
+    }
+    
+    p,span, button{
+      background-color: #04AA6D;
+      color: rgb(28, 17, 17);
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: center;
+      align-items:center;
+    }
+    tr {
+      border: 3px solid black;
+      padding: 5px;
+      margin: 10px;
+    }
+
+    th,td {
+      border: 3px solid black;
+      padding: 20px;
+      margin: 10px;
+      background-color: azure;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="/saveAll" method="post">
+  <table id="row" align="center">
+    <tr>
+      <th>ID</th>
+      <th>fname</th>
+      <th>lname</th>
+      <th>departmment</th>
+      <th>Email</th>
+      <th>action</th>
+    </tr>
+
+    <%for(let i=0; i<excel.length; i++){%>
+      <tr>
+        <td>
+          <input type="text" value="<%=excel[i].id%>" name="userid" id="userid" readonly>
+        </td>
+        <td>
+          <input type="text" name="fname" value="<%=excel[i].fname%>" id="fname<%=excel[i].id%>">
+        </td>
+        <td>
+          <input type="text" name="lname" value="<%=excel[i].lname%>" id="lname<%=excel[i].id%>">
+        </td>
+        <td>
+          <input type="text" name="department" value="<%=excel[i].department%>" id="department<%=excel[i].id%>">
+        </td>
+        <td>
+          <input type="text" name="email" value="<%=excel[i].email%>" id="email<%=excel[i].id%>">
+        </td> 
+        <td><p  onclick="editdata(`<%=excel[i].id%>`)">Save</p></td>
+        
+      </tr>
+      <%}%>
+
+   
+  </table>
+  
+  <div>
+    <input align="center" type="submit" name="submit"  id="submit">
+    <span align="center" id="add" onclick="addRow()">+</span><br>
+  </div>
+
+
+</form><br>
+</body>
+
+<script>
+
+  function addRow() {
+   
+    var row = document.getElementById("row");
+    const item = document.createElement("tr");
+    item.classList.add("row-item")
+    item.innerHTML = `
+                    <td>
+                      </td>
+                    <td>
+                    <input type="text" name="new_fname" value="" id="fname">
+                    </td>
+                    <td>
+                        <input type="text" name="new_lname" value="" id="lname">
+                    </td>
+                    <td>
+                        <input type=" name="new_department" value="" id="department">
+                    </td>
+                    <td>
+                        <input type="text" name="new_email" value="" id="email">
+                    </td>
+                    <td><p onclick="adddata()">Save</p></td>
+  
+        `;
+    row.appendChild(item);
+  }
+  async function editdata(id) {
+    var id = id;
+    var fname = document.getElementById(`fname${id}`).value;
+    var lname = document.getElementById(`lname${id}`).value;
+    var department = document.getElementById(`department${id}`).value;
+    var email = document.getElementById(`email${id}`).value;
+    alert("are you sure")
+    fetch(`http://localhost:8765/insert?id=${id}&fname=${fname}&lname=${lname}&department=${department}&email=${email}`);
+  }
+  async function adddata() {
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var department = document.getElementById("department").value;
+    var email = document.getElementById("email").value;
+    alert("are you sure")
+    fetch(`http://localhost:8765/add?fname=${fname}&lname=${lname}&department=${department}&email=${email}`);
+  }
+  // async function addall() {
+
+  //   for(let i=0;i<excel.length ;i++){
+  //    var nfname = document.getElementById("new_fname").value;
+  //   var nlname = document.getElementById("new_lname").value;
+  //   var ndepartment = document.getElementById("new_department").value;
+  //   var nemail = document.getElementById("new_email").value;
+    
+   
+  //   alert("are you sure")
+  //   fetch(`http://localhost:8050/addall?fname=${nfname[i]}&lname=${nlname[i]}&department=${ndepartment[i]}&email=${nemail[i]}`);
+  // }
+  // }
+</script>
+
+</html>

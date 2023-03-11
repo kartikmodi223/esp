@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        div{
+        margin: 10px;
+        
+    }
+    button:hover {
+  background-color: rgb(144, 137, 247);
+}
+   button{
+    padding: 10px;
+   }
+   td,th{
+        padding: 20px;
+        border-radius: 5px;
+        background-color: bisque;
+        
+    }
+    </style>
+</head>
+<body>
+    <form method="get" action="/search"  align="center">
+        <select >
+            <option value="1">and</option>
+            <option value="1">or</option>
+        </select>
+        <label >Search:</label>
+        <input type="text" name="search" id="search" <%= typeof search !== 'undefined' ? search : '' %>>
+        <input type="submit" value="go"/>
+      </form>
+    <br>
+    <table align="center" border="1">
+        <tr>
+            <td>id</td>
+            <td>fname</td>
+            <td>lname</td>
+            <td>email</td>
+            <td>dob</td>
+        </tr>
+        <% for(let i=0; i<data.length; i++){%>
+        <tr>
+            <td><%=data[i].id%></td>
+            <td><%=data[i].fname%></td>
+            <td><%=data[i].lname%></td>
+            <td><%=data[i].email%></td>
+            <td><%= data[i].dob%></td>
+        </tr>
+        <%}%>
+    </table>
+</body>
+</html>

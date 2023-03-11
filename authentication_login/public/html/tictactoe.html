@@ -3,8 +3,108 @@
 <head>
     
 </head>
+<link rel="stylesheet" href="public/css/tictactoe.css">
+<style>
+      tr,
+        td {
+            padding: 60px;
+            margin: 50px;
+            font-size: 40px;
+            height: 15px;
+        }
 
+        table {
+            height: 14cm;
+        width: 14cm; 
+            background-color: rgb(64, 64, 66);
+            border-width: 5px;
+
+
+        }
+
+        body {
+            background-color: rgb(134, 150, 160);
+        }
+
+        .modi:hover {
+            background-color: rgb(204, 146, 146);
+        }
+
+        #reset:hover {
+            background-color: blue;
+
+        }
+
+        #reseto {
+            height: 30px;
+            width: 60px;
+            text-decoration: lawngreen;
+        }
+
+        .modi {
+            border-radius: 2px;
+
+        }
+
+        input {
+            background-color: rgb(238, 132, 176);
+            text-decoration: solid;
+        }
+  tr,
+        td {
+            padding: 60px;
+            margin: 50px;
+            font-size: 40px;
+            height: 15px;
+        }
+
+        table {
+            height: 14cm;
+        width: 14cm; 
+            background-color: rgb(64, 64, 66);
+            border-width: 5px;
+
+
+        }
+
+        body {
+            background-color: rgb(134, 150, 160);
+        }
+
+        .modi:hover {
+            background-color: rgb(204, 146, 146);
+        }
+
+        #reset:hover {
+            background-color: blue;
+
+        }
+
+        #reseto {
+            height: 30px;
+            width: 60px;
+            text-decoration: lawngreen;
+        }
+
+        .modi {
+            border-radius: 2px;
+
+        }
+
+        input {
+            background-color: rgb(238, 132, 176);
+            text-decoration: solid;
+      
+        }
+
+</style>
 <body>
+
+    <form action="/tictactoe" method="get">
+
+
+
+   
     <h1 align="center"> TIC TAC TOE</h1>
 
     <table align="center" border="1">
@@ -25,7 +125,7 @@
         </tr>
     </table><br>
     <form align="center">
-        <input type="reset" name="reset" onclick="resetgame()" id="reset" value="reset" /><br><br>
+        <input align="center" type="reset" name="reset" onclick="resetgame()" id="reset" value="reset" /><br><br>
         <span id="countermessege"></span>
     </form>
 

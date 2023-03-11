@@ -91,3 +91,23 @@ span{
 color: red;
 font-weight: bold;
 }
+.homebutton{
+  padding: 20px 20px;
+  background-color: #7c9feb;
+  text-decoration: none;
+  color: aliceblue;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.homediv{
+ margin: 120px;
+ padding-left: 40px;
+}
+li{
+  margin: 50px;
+}
+.homebuttonout{
+  float: right;
+  margin-left: 700px;
+  background-color: rgb(228, 161, 161);
+}
