@@ -151,6 +151,36 @@ app.get("/logout", (req, res) => {
 
 })
 
+app.get("/profilechange?", (req, res) => {
+  const jwtToken = req.cookies.jwtToken;
+  if (!jwtToken) {
+    return res.send(`you are not authorized register first <a href="/">register</a>`);
+  }
+  const tokenData = jwt.verify(jwtToken, "kartik");
+  res.render("profilechange", { tokenData });
+})
+
+app.post("/profilechange", async (req, res) => {
+  const { id, name, email, password, cpassword } = req.body;
+  var sql = `SELECT * FROM authentication.register_table where id = ${id};`
+  const result = await getdata(sql);;
+  var oldPass = result[0].password;
+  console.log("old p " + oldPass);
+  var hashp = await bcrypt.hash(cpassword, 10);
+  var match = await bcrypt.compare(password, oldPass);
+  console.log(match);
+  if (match) {
+    var sql1 = `update authentication.register_table set name = "${name}",password="${hashp}", email="${email}" where id= ${id};`
+    var update = await getdata(sql1);
+    console.log("edited");
+    res.redirect('/home');
+  } else {
+    res.redirect('/profilechange');
+    console.log("old password not mathed");
+  }
+})
+
+
 
 async function getdata(sql) {
   return new Promise((res, rej) => {

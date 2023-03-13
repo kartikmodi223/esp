@@ -1,97 +1,110 @@
 body {
-    background-image: url(/img/auth-bg.png);
-    background-size: cover;
+  background-image: url(/img/auth-bg.png);
+  background-size: cover;
 }
 
 body {
-    margin: 0px;
+  margin: 0px;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-.container{
-   display: flex;
-    width: 1170px;
-    margin: 0 auto;
-    border-left: 1px dotted red;
-    border-right: 1px dotted red;
-    justify-content: space-between;
+
+.container {
+  display: flex;
+  width: 1170px;
+  margin: 0 auto;
+  border-left: 1px dotted red;
+  border-right: 1px dotted red;
+  justify-content: space-between;
 
 
 }
-.bg{
-width: 40%;
-background-color: #000000;
 
-opacity: 0.8;
+.bg {
+  width: 40%;
+  background-color: #000000;
+
+  opacity: 0.8;
 
 }
 
-input[type=text],input[type=email],input[type=password] ,select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  button{
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #174F2A;
-  }
-  
-  div {
-    border-radius: 5px;
-    padding: 10px;
-  }
-  p{
-    color: #ccc;
-    padding-top: 30px;  }
-  label{
-    color: #ccc;
-  }
-  h2{
-    font-size: 30px;
-    color: #ccc;
-  }
+input[type=text],
+input[type=email],
+input[type=password],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
-a{
-    Color : #A4843F
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.logo2{
-    padding-top: 60%;
-    position: relative;
-    bottom: 10px;
-    height: 10px;
+
+button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-span{
-color: red;
-font-weight: bold;
+
+input[type=submit]:hover {
+  background-color: #174F2A;
 }
-.homebutton{
+
+div {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+p {
+  color: #ccc;
+  padding-top: 30px;
+}
+
+label {
+  color: #ccc;
+}
+
+h2 {
+  font-size: 30px;
+  color: #ccc;
+}
+
+a {
+  Color: #A4843F
+}
+
+.logo2 {
+  padding-top: 60%;
+  position: relative;
+  bottom: 10px;
+  height: 10px;
+}
+
+span {
+  color: red;
+  font-weight: bold;
+}
+
+.homebutton {
   padding: 20px 20px;
   background-color: #7c9feb;
   text-decoration: none;
@@ -99,15 +112,16 @@ font-weight: bold;
   border-radius: 5px;
   font-weight: bold;
 }
-.homediv{
+
+/* .homediv{
  margin: 120px;
  padding-left: 40px;
-}
+} */
 
-.homebuttonout{
+.homebuttonout {
   float: right;
   margin-left: 850px;
-  padding: 10px ;
+  padding: 10px;
   background-color: #cf251f;
   text-decoration: none;
   color: aliceblue;
@@ -115,9 +129,22 @@ font-weight: bold;
   font-weight: bold;
 
 }
-.header{
+
+.header {
   display: flex;
+  text-align: center;
 }
-li{
+
+li {
   margin: 50px;
+}
+
+.header h1 {
+  color: #cf251f;
+  font-size: 40px;
+}
+
+.headul ul {
+  display: flex;
+
 }

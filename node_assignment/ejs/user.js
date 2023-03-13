@@ -16,6 +16,8 @@ con.connect((err) => {
     console.log('database connected')
 
 });
+
+
 app.get("/", (req, res) => {
     var data = [];
    let count;

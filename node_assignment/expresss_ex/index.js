@@ -19,20 +19,6 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-// app.get('/get', (req, res) => {
-//   const query = con.query('select * from student', (err, value) => {
-//     if (err) throw err;
-//     res.json(value);
-//   })
-// });
-// app.delete('/delete', (req, res) => {
-//   const query = con.query('delete from student where firstname="kartik"', (err, value) => {
-//     if (err) throw err;
-//     res.json(value);
-//     res.send("success");
-//   })
-// });
-
 
 app.post('/post', (req, res) => {
   const query = con.query('insert into student_express(id,fname,lname,email,dob)values("1","kartik","modi","kartik123@gmail.com","22-03-2002")', 
