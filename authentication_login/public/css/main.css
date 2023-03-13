@@ -103,11 +103,21 @@ font-weight: bold;
  margin: 120px;
  padding-left: 40px;
 }
-li{
-  margin: 50px;
-}
+
 .homebuttonout{
   float: right;
-  margin-left: 700px;
-  background-color: rgb(228, 161, 161);
+  margin-left: 850px;
+  padding: 10px ;
+  background-color: #cf251f;
+  text-decoration: none;
+  color: aliceblue;
+  border-radius: 5px;
+  font-weight: bold;
+
+}
+.header{
+  display: flex;
+}
+li{
+  margin: 50px;
 }
